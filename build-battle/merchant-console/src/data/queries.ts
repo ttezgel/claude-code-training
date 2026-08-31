@@ -77,8 +77,10 @@ export function sortPayments(
   const factor = direction === "asc" ? 1 : -1
   return [...payments].sort((a, b) => {
     if (sort === "amount") {
-      // Sort by the formatted amount so the order matches what the table shows.
-      return String(a.amount).localeCompare(String(b.amount)) * factor
+      // Amounts are integer minor units, so compare them as numbers. Comparing
+      // the stringified value sorted lexicographically, which put 9000 after
+      // 10000 and made every amount-sorted page subtly wrong.
+      return (a.amount - b.amount) * factor
     }
     return a.createdAt.localeCompare(b.createdAt) * factor
   })
