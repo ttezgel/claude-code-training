@@ -71,6 +71,40 @@ export interface Payout {
   paymentIds: string[]
 }
 
+export type CardStatus = "active" | "frozen" | "cancelled"
+
+/** One entry per status change, so the detail page can answer "what happened". */
+export interface CardStatusEvent {
+  from: CardStatus | null
+  to: CardStatus
+  /** ISO 8601, always UTC. */
+  at: string
+}
+
+export interface Card {
+  id: string
+  nickname: string
+  merchantId: string
+  /** Integer minor units. Never a float. */
+  spendLimit: number
+  currency: Currency
+  status: CardStatus
+  /**
+   * Last four only. The full number is returned exactly once, by the creation
+   * response, and is never stored here.
+   */
+  last4: string
+  /** Opaque handle for the generated number. Not the number itself. */
+  numberRef: string
+  /** Optional merchant category lock, chosen at issue time. */
+  categoryLock: string | null
+  /** ISO 8601, always UTC. */
+  createdAt: string
+  history: CardStatusEvent[]
+  /** Idempotency key from the issuing client. Repeats return the same card. */
+  requestId: string | null
+}
+
 export interface PaymentFilters {
   status?: PaymentStatus | "all"
   merchantId?: string
