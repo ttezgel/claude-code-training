@@ -29,6 +29,12 @@ Then build with it loaded:
 @docs/specs/NWP-201-issue-cards.md
 ```
 
+## Written specs
+
+| Spec | Ticket |
+| --- | --- |
+| [`NWP-201-issue-cards.md`](NWP-201-issue-cards.md) | [NWP-201](../tickets/NWP-201.md) — issue virtual cards from the console |
+
 ## Rules
 
 - No code in a spec. File paths and function names, yes. Implementations, no.
