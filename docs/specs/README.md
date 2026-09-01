@@ -33,7 +33,7 @@ Then build with it loaded:
 
 | Spec | Ticket |
 | --- | --- |
-| [`NWP-201-issue-cards.md`](NWP-201-issue-cards.md) | [NWP-201](../tickets/NWP-201.md) — issue virtual cards from the console |
+| [`NWP-201-issue-cards.md`](../../NWP-201-issue-cards.md) | [NWP-201](../tickets/NWP-201.md) — issue virtual cards from the console |
 
 ## Rules
 
